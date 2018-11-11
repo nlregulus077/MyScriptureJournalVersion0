@@ -100,6 +100,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddScripture.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scriptures.cshtml" />
     <None Include="Web.Debug.config">

@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+
+    var book = "";
+    var chapter = "";
+    var verse = "";
+    var notes = "";
+    var scriptureId = "";
+
+    if (!IsPost)
+    {
+        if (!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt())
+        {
+            scriptureId = Request.QueryString["ID"];
+            var db = Database.Open("ScripturesDatabase");
+            var dbCommand = "SELECT * FROM FavoriteScriptures WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, scriptureId);
+
+            if (row != null)
+            {
+                book = row.Book;
+                chapter = row.Chapter.ToString();
+                verse = row.Verse;
+                notes = row.Notes;
+            }
+
+            else
+            {
+                Validation.AddFormError("No entry was found for that ID.");
+            }
+
+        }
+
+        else
+        {
+            Validation.AddFormError("No entry was found for that ID.");
+        }
+
+    }
+
+    if (IsPost && !Request["buttonDelete"].IsEmpty())
+    {
+        scriptureId = Request.Form["scriptureId"];
+        var db = Database.Open("ScripturesDatabase");
+        var deleteCommand = "DELETE FROM FavoriteScriptures WHERE ID = @0";
+        db.Execute(deleteCommand, scriptureId);
+        Response.Redirect("~/Scriptures");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" content="width=device-width" />
+    <title>Delete a Scripture</title>
+</head>
+<body>
+    <h1>Delete a Scripture</h1>
+    @Html.ValidationSummary()
+    <p><a href="~/Scriptures">Return to main page</a></p>
+
+    <form method="post">
+        <fieldset>
+            <legend>Scripture Information</legend>
+
+            <p>
+                <span>Book:</span>
+                <span>@book</span>
+            </p>
+
+            <p>
+                <span>Chapter:</span>
+                <span>@chapter</span>
+            </p>
+
+            <p>
+                <span>Verse:</span>
+                <span>@verse</span>
+            </p>
+
+            <p>
+                <span>Notes:</span>
+                <span>@notes</span>
+            </p>
+
+            <input type="hidden" name="scriptureId" value="@scriptureId" />
+            <p><input type="submit" name="buttonDelete" value="Delete Scripture"</p>
+        </fieldset>
+    </form>
+</body>
+</html>

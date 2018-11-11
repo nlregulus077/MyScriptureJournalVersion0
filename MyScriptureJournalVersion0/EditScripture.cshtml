@@ -9,7 +9,7 @@
 
     if (!IsPost)
     {
-        if (!Request.QueryString["ID"].IsEmpty())
+        if (!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt())
         {
             scriptureId = Request.QueryString["ID"];
             var db = Database.Open("ScripturesDatabase");
@@ -81,7 +81,7 @@
     @Html.ValidationSummary()
     <form method="post">
         <fieldset>
-            <legend>Movie Information</legend>
+            <legend>Scripture Information</legend>
 
             <p>
                 <label for="book">Book: </label>

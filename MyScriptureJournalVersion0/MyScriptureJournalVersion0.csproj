@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddScripture.cshtml" />
+    <Content Include="EditScripture.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scriptures.cshtml" />
     <None Include="Web.Debug.config">

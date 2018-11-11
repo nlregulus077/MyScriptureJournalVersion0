@@ -1,5 +1,6 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Add a Scripture";
 
     Validation.RequireField("book", "Please provide a book");
     Validation.RequireField("chapter", "Please provide the chapter.");
@@ -31,23 +32,9 @@
 <html>
 <head>
     <meta charset="utf-8" content="width=device-width" />
-    <title>Add a Scripture</title>
-    <style type="text/css">
-        .field-validation-error {
-            font-weight:bold;
-            color:red;
-        }
-        .validation-summary-errors {
-            border:2px dashed red;
-            color:red;
-            background-color:yellow;
-            font-weight:bold;
-            margin:12px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Add a Scripture</h1>
+    <h2>Add a Scripture</h2>
     @Html.ValidationSummary()
     <form method="post">
         <fieldset>

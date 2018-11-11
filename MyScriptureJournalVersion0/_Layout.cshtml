@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Page.Title</title>
+    <link href="~/Scriptures.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+    <container>
+        <header>
+            <h1>My Scripture Journal</h1>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>
+            &copy; @DateTime.Now.Year Brigham Young University-Idaho CIT 365
+        </footer>
+    </container>
+</body>
+</html>

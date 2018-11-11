@@ -1,5 +1,7 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Scripture List";
+
     var db = Database.Open("ScripturesDatabase");
     var selectCommand = "SELECT * FROM FavoriteScriptures";
     var searchTerm = "";
@@ -25,7 +27,6 @@
 <html>
 <head>
     <meta charset="utf-8" content="width=device-width" />
-    <title>My Scripture Journal</title>
     <style type="text/css">
         .grid {
             margin: 4px;
@@ -51,7 +52,7 @@
     </style>
 </head>
 <body>
-    <h1>Scripture Journal</h1>
+    <h2>Scripture Journal</h2>
     <form method="get">
         <div>
             <label for="searchBook">Search by Book:</label>
